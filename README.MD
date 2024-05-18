@@ -3,7 +3,6 @@
 ###### This is the simple realtime chat application crafted with the latest technologies such as ReactJs for frontend MONGODB for database and Nodejs and Express for backend and SokcetIO for realtime communication.
 
 
-
 ### Steps to Run the Application Locally
 
 #### Server Setup:
@@ -39,3 +38,8 @@
 - `POST /api/register`: Handles user registration. Requires an object with `email`, `password`, and `username` fields in the request body.
 - `POST /api/message`: Saves a message to the server. Requires an object with `username` and `text` fields in the request body.
 - `GET /api/get-messages`: Retrieves all messages from the server.
+
+
+### Demo Credentials
+    `username: test`
+    `password: test`
