@@ -44,5 +44,5 @@
 
 
 ### Demo Credentials
-    `username: test`
-    `password: test`
+    *username*: test@test.com
+    *password*: test
