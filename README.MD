@@ -11,6 +11,7 @@
 2. Run `npm install` to install the dependencies.
 3. Create a `.env` file in the `Server` folder.
 4. Inside the `.env` file, add the following configurations:
+
     ```
     PORT=4000
     MONGODB_URI="your_mongodb_address"
@@ -24,9 +25,11 @@
 7. Run `npm install` to install the dependencies.
 8. Create a `.env` file in the root folder of the `Client`.
 9. Inside the `.env` file, add the following configuration:
+
     ```
     VITE_API_BASE_URL="http://localhost:4000/api"
     ```
+
    This sets the base URL for your API to `http://localhost:4000/api` when running locally.
 10. Start the frontend development server by running `npm run dev`.
 
