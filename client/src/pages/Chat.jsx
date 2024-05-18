@@ -1,4 +1,4 @@
-import { SendHorizonal } from 'lucide-react';
+import { LogOut, SendHorizonal } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import Input from '../components/Input';
 import Message from '../components/Message';
@@ -16,7 +16,7 @@ const Chat = () => {
         const sanitizedMessage = DOMPurify.sanitize(e.target.value);
         setMessage(sanitizedMessage);
     }
-    const { user } = useAuth();
+    const { user, handleLogout } = useAuth();
     const [messages, setMessages] = useState([])
     const sendMessage = async () => {
         if (message !== '') {
@@ -66,13 +66,23 @@ const Chat = () => {
             socket.off('message');
         };
     }, [socket, messages, user?.userName]);
+
+
     return (
         <div className='h-screen w-screen relative flex items-center justify-center overflow-hidden'>
             <div className='h-[500px] w-[600px] bg-emerald-100 rounded-full blur-[5rem] absolute -right-20 -top-10 -z-10' />
             <div className='h-[500px] w-[600px] bg-pink-100 rounded-full blur-[5rem] absolute left-20 -bottom-10 -z-10' />
             <div className='h-[500px] w-[600px] bg-orange-100 rounded-full blur-[5rem] absolute left-20 top-10 -z-10' />
             <div className='flex items-center justify-center w-full h-full flex-col gap-2'>
-                <h1 className='text-[40px] font-dancing font-bold'>Chatty</h1>
+                <div className='flex items-center justify-between md:w-[60%] w-[95%] px-3'>
+                    <h1 className='text-[40px] font-dancing font-bold'>Chatty</h1>
+                    <div className='flex items-center justify-center gap-3'>
+                        <h1 className='font-medium capitalize'>{user?.userName}</h1>
+                        <button onClick={handleLogout}>
+                            <LogOut className='text-red-500 font-bold' />
+                        </button>
+                    </div>
+                </div>
                 <div className='w-[95%] md:w-[60%] h-[80%] bg-white rounded-md shadow-md border flex flex-col p-3'>
                     <div className='flex-1 overflow-y-scroll p-1 flex flex-col'>
                         {messages.map((msg, index) => (
