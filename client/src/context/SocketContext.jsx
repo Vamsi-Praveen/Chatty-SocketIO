@@ -13,8 +13,8 @@ export const useSocket = () => {
 
 
 const SocketProvider = ({ children }) => {
-
-    const socket = useMemo(() => io('http://localhost:4000'), []);
+    const socketURL = import.meta.env.VITE_API_SOCKET_URL;
+    const socket = useMemo(() => io(baseUrl), []);
     return <SocketContext.Provider value={socket}>
         {children}
     </SocketContext.Provider>
