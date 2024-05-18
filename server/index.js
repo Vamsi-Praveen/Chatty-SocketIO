@@ -22,7 +22,7 @@ const server = http.createServer(app);
 // Attach Socket.IO to the HTTP server
 const io = new Server(server, {
     cors: {
-        origin: 'https://chatty-socket-io.vercel.app/*',
+        origin: '*',
         methods: ["GET", "POST"]
     }
 });
