@@ -14,7 +14,7 @@ export const useSocket = () => {
 
 const SocketProvider = ({ children }) => {
     const socketURL = import.meta.env.VITE_API_SOCKET_URL;
-    const socket = useMemo(() => io(baseUrl), []);
+    const socket = useMemo(() => io(socketURL), []);
     return <SocketContext.Provider value={socket}>
         {children}
     </SocketContext.Provider>
