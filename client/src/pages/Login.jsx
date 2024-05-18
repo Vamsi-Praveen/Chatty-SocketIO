@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthContext'
 
 const Login = () => {
     const { setUser, setToken, user } = useAuth()
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const navigation = useNavigate()
     useEffect(() => {
         if (user) {
@@ -31,7 +32,7 @@ const Login = () => {
             if (loginDetails.email == '' || loginDetails.password == '') {
                 return toast.error('Please enter all feilds');
             }
-            await axios.post('http://localhost:4000/api/login', loginDetails)
+            await axios.post(`${baseUrl}/login`, loginDetails)
                 .then((data) => {
                     setToken(data?.headers?.authorization);
                     setUser({ userId: data?.data?.userId, userName: data?.data?.userName });

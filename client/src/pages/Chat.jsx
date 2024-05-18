@@ -9,6 +9,7 @@ import { toast } from "react-hot-toast"
 import DOMPurify from 'dompurify';
 
 const Chat = () => {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const socket = useSocket();
     const [message, setMessage] = useState('')
     const handleChange = (e) => {
@@ -20,7 +21,7 @@ const Chat = () => {
     const sendMessage = async () => {
         if (message !== '') {
             socket.emit('sendMessage', { text: message, username: user?.userName });
-            await axios.post('http://localhost:4000/api/message', {
+            await axios.post(`${baseUrl}/message`, {
                 text: message, username: user?.userName
             }).then((data) => {
                 console.log(data)
@@ -38,7 +39,7 @@ const Chat = () => {
     };
     useEffect(() => {
         const fetchMessages = async () => {
-            await axios.get('http://localhost:4000/api/get-messages')
+            await axios.get(`${baseUrl}/get-messages`)
                 .then((data) => {
                     const messagesData = data?.data.map(msg => {
                         return { ...msg, isSentByUs: msg?.username === user?.userName }

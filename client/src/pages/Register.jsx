@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthContext'
 
 const Register = () => {
     const { user } = useAuth()
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const [loginDetails, setLoginDetails] = useState({
         email: '',
         password: '',
@@ -32,7 +33,7 @@ const Register = () => {
             if (loginDetails.email == '' || loginDetails.password == '') {
                 return toast.error('Please enter all feilds');
             }
-            await axios.post('http://localhost:4000/api/register', loginDetails)
+            await axios.post(`${baseUrl}/register`, loginDetails)
                 .then((data) => {
                     toast.success('Account Creation successfull');
                     navigation('/login')
