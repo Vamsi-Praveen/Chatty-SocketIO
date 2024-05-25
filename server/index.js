@@ -21,7 +21,10 @@ const server = http.createServer(app);
 
 // Attach Socket.IO to the HTTP server
 const io = new Server(server, {
-    cors: false
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST']
+    }
 });
 
 io.on("connection", (socket) => {
